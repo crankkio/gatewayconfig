@@ -2,7 +2,7 @@ var renderMW = require('./render');
 var fs = require('fs');
 var wifi = require('node-wifi');
 
-var configPath = '/home/gergo/example';
+var configPath = '/etc/wpa_supplicant/wpa_supplicant.conf';
 module.exports = function(app){
 
   var objectRepository = {
@@ -51,8 +51,6 @@ app.post("/wifiremove", function(req, res, next) {
         for(var i in conf){
 
             if(conf[i].SSID != rem){
-                console.log(conf[i].SSID);
-                console.log(rem);
                 result.push(conf[i]); // switch to filter
             }
 
@@ -152,7 +150,10 @@ app.post("/wifisave", function(req, res, next) {
 });
 
  function saveList(APlist) {
-    var content = `ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel
+    var content = `
+country=GB
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
 `;
     var nw = `
 network={
@@ -218,9 +219,7 @@ function(req, res, next) {
                 }
             }
         }
-        console.log(netconfig)
         res.send({"ssid":netconfig});
-        
     }
 }
 
