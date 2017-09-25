@@ -23,6 +23,10 @@ app.use(function(err, req, res, next){
   res.status(404).send('These aren\'t the droids you\'re looking for');
   console.error(err.stack);
 });
+app.use(function( req, res, next){
+   console.log("heeee")
+});
+
 
 // start it
 app.listen(port, function () {

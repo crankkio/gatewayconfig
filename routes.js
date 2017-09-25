@@ -1,6 +1,6 @@
 var renderMW = require('./render');
 var fs = require('fs');
-var wifi = require('node-wifi');
+var wifi = require('pi-wifi');
 
 var configPath = '/etc/wpa_supplicant/wpa_supplicant.conf';
 module.exports = function(app){
@@ -228,31 +228,32 @@ function(req, res, next) {
 app.get("/APList",
     function(req, res, next) {
 
-    wifi.init({
-        iface : 'null' // network interface, choose a random wifi interface if set to null 
-    });
+    //wifi.init({
+    //    iface : 'wlan0' // network interface, choose a random wifi interface if set to null 
+    //});
 
-    wifi.scan(function(err, networks) {
-        if (err) {
+    //wifi.scan(function(err, networks) {
+    //    if (err) {
+    //        console.log(err)
             res.send("{}");
-        } else {
-            for(var z in networks){
-                networks[z].SSID = networks[z].ssid;
-                quality = 0;
-                RSSI = networks[z].signal_level;
-                if (RSSI <= -100) {
-                    quality = 0;
-                } else if (RSSI >= -50) {
-                    quality = 100;
-                } else {
-                    quality = 2 * (RSSI + 100);
-                }
-                
-                networks[z].signal = quality;
-            }
-            res.send(networks);
-        }
-    });
+    //    } else {
+    //        for(var z in networks){
+    //            networks[z].SSID = networks[z].ssid;
+    //            quality = 0;
+    //            RSSI = networks[z].signal_level;
+    //            if (RSSI <= -100) {
+    //                quality = 0;
+    //            } else if (RSSI >= -50) {
+    //                quality = 100;
+    //            } else {
+    //                quality = 2 * (RSSI + 100);
+    //            }
+    //            console.log(networks)
+     //           networks[z].signal = quality;
+      //      }
+       //     res.send(networks);
+       // }
+   // });
 
     });
 }
