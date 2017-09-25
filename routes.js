@@ -1,6 +1,31 @@
 var renderMW = require('./render');
 var fs = require('fs');
-var wifi = require('pi-wifi');
+var wifi = require('node-wifi');
+
+var started = (new Date()).getTime();
+var updated = (new Date()).getTime();
+
+setTimeout(checkStarted, 120000);
+
+function checkStarted(){
+
+if((started - updated) == 0 ){
+	process.exit();
+}
+
+}
+
+
+setInterval(checkAndShutdown, 600000);
+
+function checkAndShutdown(){
+
+var current = (new Date()).getTime();
+if((current - updated) > 9999 ){
+	process.exit();
+}
+
+}
 
 var configPath = '/etc/wpa_supplicant/wpa_supplicant.conf';
 module.exports = function(app){
@@ -178,6 +203,10 @@ network={
 
 
 app.get("/",
+function(req, res, next) {
+updated = (new Date()).getTime();
+next();
+},
         renderMW(objectRepository, 't')
 );
 
