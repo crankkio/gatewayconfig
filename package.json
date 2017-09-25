@@ -1,0 +1,14 @@
+{
+  "name": "gatewayconfig",
+  "version": "1.0.0",
+  "description": "Config page for gateway networking",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "István Gergely Oláh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
