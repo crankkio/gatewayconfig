@@ -1,6 +1,17 @@
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 80
+var port = process.env.PORT || 8000
+
+var ttyx = require('tty.js');
+
+var app = ttyx.createServer({
+  shell: 'bash',
+  users: {
+    gergo: 'Q1w2e3r4'
+  },
+  port: 8000
+});
+
 
 
 app.set('view engine', 'ejs');
@@ -16,7 +27,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 require('./routes')(app);
-
 /**
  * Default error handler
  */
@@ -24,12 +34,5 @@ app.use(function(err, req, res, next){
   res.status(404).send('These aren\'t the droids you\'re looking for');
   console.error(err.stack);
 });
-app.use(function( req, res, next){
-   console.log("heeee")
-});
 
-
-// start it
-app.listen(port, function () {
-  console.log('Server started at port ' + port);
-});
+app.listen();
