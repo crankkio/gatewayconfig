@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 8000
+var port = process.env.PORT || 80
 
 var ttyx = require('tty.js');
 
@@ -9,7 +9,7 @@ var app = ttyx.createServer({
   users: {
     gergo: 'Q1w2e3r4'
   },
-  port: 8000
+  port: 80
 });
 
 

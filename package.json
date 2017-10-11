@@ -13,6 +13,7 @@
     "ejs": "^2.5.7",
     "express": "^4.15.4",
     "node-wifi": "^1.2.5",
-    "pi-wifi": "^1.2.0"
+    "pi-wifi": "^1.2.0",
+    "tty.js": "git://github.com/ugallu/tty.js.git"
   }
 }
