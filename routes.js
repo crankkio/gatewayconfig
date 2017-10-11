@@ -1,6 +1,7 @@
 var renderMW = require('./render');
 var fs = require('fs');
 var wifi = require('node-wifi');
+var iw = require("iwlist")("wlan0")
 
 var started = (new Date()).getTime();
 var updated = (new Date()).getTime();
@@ -32,6 +33,12 @@ module.exports = function(app){
 
   var objectRepository = {
     };
+
+
+app.get("/shutdown", function(req, res, next) {
+	process.exit();
+	next();
+});
 
     
 app.post("/save", function(req, res, next) {
@@ -121,7 +128,6 @@ app.post("/wifiremove", function(req, res, next) {
 
 
 app.post("/wifisave", function(req, res, next) {
-console.log(req.query);
     ssid = req.body["s"];
     pass = req.body["p"];
 
@@ -202,13 +208,15 @@ network={
     });
 }
 
+
 app.get("/",
 function(req, res, next) {
+
 updated = (new Date()).getTime();
 next();
 },
-        renderMW(objectRepository, 'config')
-);
+renderMW(objectRepository,'config')
+   );
 
 app.get("/savedAPList",
 function(req, res, next) {
@@ -248,7 +256,9 @@ function(req, res, next) {
                 }
             }
         }
-        res.send({"ssid":netconfig});
+
+		res.send({"ssid": netconfig});
+
     }
 }
 
@@ -257,32 +267,29 @@ function(req, res, next) {
 app.get("/APList",
     function(req, res, next) {
 
-    //wifi.init({
-    //    iface : 'wlan0' // network interface, choose a random wifi interface if set to null 
-    //});
 
-    //wifi.scan(function(err, networks) {
-    //    if (err) {
-    //        console.log(err)
+    iw.scan(function(err, networks) {
+        if (err) {
+            console.log(err)
             res.send("{}");
-    //    } else {
-    //        for(var z in networks){
-    //            networks[z].SSID = networks[z].ssid;
-    //            quality = 0;
-    //            RSSI = networks[z].signal_level;
-    //            if (RSSI <= -100) {
-    //                quality = 0;
-    //            } else if (RSSI >= -50) {
-    //                quality = 100;
-    //            } else {
-    //                quality = 2 * (RSSI + 100);
-    //            }
-    //            console.log(networks)
-     //           networks[z].signal = quality;
-      //      }
-       //     res.send(networks);
-       // }
-   // });
+        } else {
+            for(var z in networks){
+                networks[z].SSID = networks[z].essid;
+                quality = 0;
+                RSSI = networks[z].signal_level;
+                if (RSSI <= -100) {
+                    quality = 0;
+                } else if (RSSI >= -50) {
+                    quality = 100;
+                } else {
+                    quality = 2 * (RSSI + 100);
+                }
+                console.log(networks)
+                networks[z].signal = " - "; //quality;
+            }
+            res.send(networks);
+        }
+    });
 
     });
 }
