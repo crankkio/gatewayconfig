@@ -6,9 +6,6 @@ var ttyx = require('tty.js');
 
 var app = ttyx.createServer({
   shell: 'bash',
-  users: {
-    gergo: 'Q1w2e3r4'
-  },
   port: 80
 });
 
