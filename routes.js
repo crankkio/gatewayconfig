@@ -121,6 +121,7 @@ app.post("/wifiremove", function(req, res, next) {
 
 
 app.post("/wifisave", function(req, res, next) {
+console.log(req.query);
     ssid = req.body["s"];
     pass = req.body["p"];
 

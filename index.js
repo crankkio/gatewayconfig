@@ -1,28 +1,27 @@
-var express = require('express');
-var app = express();
 var port = process.env.PORT || 80
-
-var ttyx = require('tty.js');
-
-var app = ttyx.createServer({
-  shell: 'bash',
-  port: 80
-});
-
-
-
-app.set('view engine', 'ejs');
-// public stuff to /static
- app.use('/static', express.static('public'));
-
 // for post process
 var bodyParser = require('body-parser');
-app.use(bodyParser.json());
-// for parsing application/x-www-form-urlencoded
+var tty = require('tty.js');
+var express = require('express')
+var app = express();
+var ttyapp = tty.createServer({
+  shell: 'bash',
+  port: 9000
+});
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+
+app.use(bodyParser.json());
+
+app.set('view engine', 'ejs');
+// public stuff to /static
+app.use('/static', tty.static('public'));
+
+//app.use(ttyx.bodyParser())
+// for parsing application/x-www-form-urlencoded
 require('./routes')(app);
 /**
  * Default error handler
@@ -32,4 +31,5 @@ app.use(function(err, req, res, next){
   console.error(err.stack);
 });
 
-app.listen();
+app.listen(8000, ()=>{console.log("Server started at the 80 port.")});
+ttyapp.listen();
