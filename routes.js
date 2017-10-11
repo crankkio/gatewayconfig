@@ -202,20 +202,12 @@ network={
     });
 }
 
-app.get("/terminal",
-function(req, res, next) {
-updated = (new Date()).getTime();
-next();
-},
-        renderMW(objectRepository, 'terminal')
-);
-
 app.get("/",
 function(req, res, next) {
 updated = (new Date()).getTime();
 next();
 },
-        renderMW(objectRepository, 't')
+        renderMW(objectRepository, 'config')
 );
 
 app.get("/savedAPList",
