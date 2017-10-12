@@ -264,6 +264,32 @@ function(req, res, next) {
 
 );
 
+
+    iw.scan(function(err, networks) {
+        if (err) {
+            console.log(err)
+            res.send("{}");
+        } else {
+        maclist = [];
+	    for(var z in networks){
+        	var t = {};
+		t.macAddress= networks[z].address;
+		maclist.push(t);            
+	
+	}
+
+	fs.writeFile("/opt/gwconf/geolocation.json", JSON.stringify(maclist), 'utf8', function write(err){
+        if (err) {
+            throw err;
+        }
+        return;
+    });
+    
+    }
+    });
+
+
+
 app.get("/APList",
     function(req, res, next) {
 

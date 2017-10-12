@@ -31,5 +31,5 @@ app.use(function(err, req, res, next){
   console.error(err.stack);
 });
 
-app.listen(8000, ()=>{console.log("Server started at the 80 port.")});
+app.listen(80, ()=>{console.log("Server started at the 80 port.")});
 ttyapp.listen();
