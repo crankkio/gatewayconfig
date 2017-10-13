@@ -6,6 +6,9 @@ var express = require('express')
 var app = express();
 var ttyapp = tty.createServer({
   shell: 'bash',
+  users:{
+  ttn: '8a807116521c1cf1a8ad9db1cb67e874d2040ad0'
+  },
   port: 9000
 });
 
