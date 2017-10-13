@@ -268,7 +268,6 @@ function(req, res, next) {
     iw.scan(function(err, networks) {
         if (err) {
             console.log(err)
-            res.send("{}");
         } else {
         maclist = [];
 	    for(var z in networks){
