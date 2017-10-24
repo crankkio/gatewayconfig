@@ -75,7 +75,7 @@ String.prototype.replaceAll = function(a, c) {
     return d.replace(new RegExp(a, "g"), c)
 };
 var template = `<tr><td>{ssid}</td><td id="{ssid}_passfield" class="passwordfield"><div class="buttonfield"><a class="button editorswitch" data-ssid="{ssid}" href="#">Update</a>      </div><div class="editorfield"><input type="password" id="{ssid}_inputfield" placeholder="*****"><a class="button button-primary savebutton" data-ssid="{ssid}" href="#">Save</a><a class="button cancelbutton" data-ssid="{ssid}" href="#">Cancel</a>      </div>            </td>      </tr>`,
-    savedItemTemplate = `<tr><td>{ssid}</td><td><span class="q {l}">{s}%</span></td><td id="{ssid}_passfield" class="passwordfield"><div class="buttonfield"><a class="button removebutton" data-ssid="{ssid}" href="#">Remove</a></div></td></tr>`;
+    savedItemTemplate = `<tr><td>{ssid}</td><td><span class="q {l}"></span></td><td id="{ssid}_passfield" class="passwordfield"><div class="buttonfield"><a class="button removebutton" data-ssid="{ssid}" href="#">Remove</a></div></td></tr>`;
 
 function createSSIDList(a, c) {
     var d = JSON.parse(a),
