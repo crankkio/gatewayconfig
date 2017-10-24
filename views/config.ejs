@@ -8,11 +8,11 @@
  <span class="label-body">Refresh list in every 30 sec</span> </label> 
 <a href="./shutdown" class="button button-primary">Continue to use as Gateway</a>
 <h3>Available Access Points</h3>
- <table class="u-full-width"> <thead> <tr> <th>SSID</th> <th>
-<div class="one columns">Signal strength</div></th> <th>Password</th> </tr></thead> <tbody id="tableContent"> <tr>
+ <table class="u-full-width"> <thead> <tr> <th>SSID</th>
+<th>Password</th> </tr></thead> <tbody id="tableContent"> <tr>
 <td>Scanning SSIDS <div class="loadingspinner"></div></td></tr></tbody>
 </table> <h3>Saved Access Points</h3> <table class="u-full-width"> <thead> 
-<tr> <th>SSID</th> <th><div class="one columns">Signal strength</div></th> 
+<tr> <th>SSID</th> 
 <th>Password</th> </tr></thead> <tbody id="tableSavedContent"> </tbody></table> 
 <h5> Save custom one </h5> <div class="editorfield"> <input type="text" id="customSSIDField"placeholder="ssid"> <input type="password" id="customPassField" placeholder="password"> <button class="button button-primary" id="customUpdate" data-ssid=="{ssid}" >Save</button> </div>
 </div></div>
@@ -74,7 +74,7 @@ String.prototype.replaceAll = function(a, c) {
     var d = this;
     return d.replace(new RegExp(a, "g"), c)
 };
-var template = `<tr><td>{ssid}</td><td><span class="q {l}">{s}%</span></td><td id="{ssid}_passfield" class="passwordfield"><div class="buttonfield"><a class="button editorswitch" data-ssid="{ssid}" href="#">Update</a>      </div><div class="editorfield"><input type="password" id="{ssid}_inputfield" placeholder="*****"><a class="button button-primary savebutton" data-ssid="{ssid}" href="#">Save</a><a class="button cancelbutton" data-ssid="{ssid}" href="#">Cancel</a>      </div>            </td>      </tr>`,
+var template = `<tr><td>{ssid}</td><td id="{ssid}_passfield" class="passwordfield"><div class="buttonfield"><a class="button editorswitch" data-ssid="{ssid}" href="#">Update</a>      </div><div class="editorfield"><input type="password" id="{ssid}_inputfield" placeholder="*****"><a class="button button-primary savebutton" data-ssid="{ssid}" href="#">Save</a><a class="button cancelbutton" data-ssid="{ssid}" href="#">Cancel</a>      </div>            </td>      </tr>`,
     savedItemTemplate = `<tr><td>{ssid}</td><td><span class="q {l}">{s}%</span></td><td id="{ssid}_passfield" class="passwordfield"><div class="buttonfield"><a class="button removebutton" data-ssid="{ssid}" href="#">Remove</a></div></td></tr>`;
 
 function createSSIDList(a, c) {
