@@ -24,8 +24,8 @@ Mivel tehetjük jobbá, stabilabbá, felhasználóbaráttá szoftveresen (és ha
 		* A Hostapd csomag telepítésével és konfigurálásával lehetséges AP Hotspotot csinálni az eszközünkből.
 			* https://nims11.wordpress.com/2012/04/27/hostapd-the-linux-way-to-create-virtual-wifi-access-point/ (A DHCP bekezdés és az utána lévőek már nem kellenek)
 			* /etc/hostapd/hostapd.conf
-			```
-			interface=wlan0
+```
+interface=wlan0
 driver=nl80211
 hw_mode=g
 channel=6
@@ -40,7 +40,7 @@ rsn_pairwise=CCMP
 ssid=GWCONF
 wpa_passphrase=AlertJack
 ieee80211n=1
-	```
+```
 	* Érdemes még telepíteni a dnsmasq csomagot is:
 		* 	https://nims11.wordpress.com/2013/05/22/using-hostapd-with-dnsmasq-to-create-virtual-wifi-access-point-in-linux/
 	* Érdemes még telepíteni a dnsmasq csomagot is:
