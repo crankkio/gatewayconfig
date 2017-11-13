@@ -41,13 +41,13 @@ ssid=GWCONF
 wpa_passphrase=AlertJack
 ieee80211n=1
 ```
-	* Érdemes még telepíteni a dnsmasq csomagot is:
-		* 	https://nims11.wordpress.com/2013/05/22/using-hostapd-with-dnsmasq-to-create-virtual-wifi-access-point-in-linux/
-	* Érdemes még telepíteni a dnsmasq csomagot is:
+* Érdemes még telepíteni a dnsmasq csomagot is:
+	* 	https://nims11.wordpress.com/2013/05/22/using-hostapd-with-dnsmasq-to-create-virtual-wifi-access-point-in-linux/
+* Érdemes még telepíteni a dnsmasq csomagot is:
 		* https://nims11.wordpress.com/2013/05/22/using-hostapd-with-dnsmasq-to-create-virtual-wifi-access-point-in-linux/
-	* Network availability script
-		* Egyszerű script, mely ping alapján ellenőrzi, hogy az internet elérhető-e és vagy a linux networkinget indítja újra vagy teljesen rebootol
-		* maga a script
+* Network availability script
+	* Egyszerű script, mely ping alapján ellenőrzi, hogy az internet elérhető-e és vagy a linux networkinget indítja újra vagy teljesen rebootol
+	* maga a script
 ```
 #!/bin/bash
 
